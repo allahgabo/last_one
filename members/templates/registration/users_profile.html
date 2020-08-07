@@ -1,0 +1,86 @@
+{% extends 'course/base.html' %}
+{% load static %}
+{% block content %}
+
+
+	<!-- ================ start banner Area ================= -->
+	<section class="banner-area">
+		<div class="container">
+			<div class="row justify-content-center align-items-center">
+				<div class="col-lg-12 banner-right">
+					<h1 class="text-white">
+							User Profile
+					</h1>
+					<p class="mx-auto text-white  mt-20 mb-40">
+						In the history of modern astronomy, there is probably no one greater leap forward than the building.
+					</p>
+					<div class="link-nav">
+						<span class="box">
+							<a href="{% url 'index' %}">Home </a>
+							<i class="lnr lnr-arrow-right"></i>
+							
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ================ End banner Area ================= -->
+			<div class="col-lg-8 sidebar-widgets">
+					<div class="widget-wrap">
+						<div class="single-sidebar-widget search-widget">
+							
+						</div>
+						<div class="single-sidebar-widget user-info-widget">
+
+						{% if page_user.profile_pic %}
+							<img src="{{page_user.profile_pic.url}}" width="400" height="400" class="rounded"  alt="">
+						{% else %}
+							<img src="{% static 'course/images/default_profile_pic.png' %}" width="300" height="300" class="rounded"  alt="">
+						{% endif %}
+
+							<a href="#"><h4>
+								{{page_user.user.first_name}}-{{page_user.user.last_name}}
+							</h4>
+						</a>
+							
+							<ul class="social-links">
+								<li>
+									{% if page_user.facebook_url %}
+									<a href="{{page_user.facebook_url}}">
+										<i class="fa fa-facebook"></i>
+									</a>
+									{% endif %}
+								</li>
+								<li>
+									{% if page_user.twitter_url %}
+									<a href="{{page_user.twitter_url}}">
+										<i class="fa fa-twitter"></i>
+									</a>
+									{% endif %}
+								</li>
+								<li>
+									{% if page_user.instagram_url %}
+									<a href="{{page_user.instagram_url}}">
+										<i class="fa fa-instagram"></i>
+									</a>
+									{% endif %}
+								</li>
+							
+							</ul>
+							<p class="text-center">
+								{{page_user.bio}}
+							</p>
+						</div>
+					<center>
+						<a href="{% url 'blog-home'  %}" class="view-more-btn ">Back</a>
+					</center>
+						<div class="single-sidebar-widget ads-widget">
+
+							<a href="#"><img class="img-fluid" src="" alt=""></a>
+						</div>
+						
+				
+					</div>
+				</div>
+{% endblock content %}	
